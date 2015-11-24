@@ -12,8 +12,8 @@ int main(){
     //read in the datalog into odom & laser scan
     ParseData data;
 
-    int test = data.odoms.size();
-    cout << test << endl;
+    cout << "There are " << data.odoms.size() << " odom points" << endl;
+    cout << "There are " << data.lasers.size() << " laser points" << endl;
 
     //read in occupancy map as weight?
 

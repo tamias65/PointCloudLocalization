@@ -12,7 +12,7 @@ ParseData::ParseData()
                       "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata2.log",
                       "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata3.log",
                       "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata4.log"};
-    int nFilesToUse = 1;
+    int nFilesToUse = 4;
 
     for (int i = 0; i < nFilesToUse; i++){
         ifstream inputFile(file[i].c_str());
