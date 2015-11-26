@@ -10,16 +10,19 @@ using namespace cv;
 class Visualization
 {
 public:
-    Visualization();
+    Visualization(int);
     void create_frame(Eigen::MatrixXf &);
+    void create_video();
 
     int curr_frame;
 
 protected:
-    char* mapImage;
+    char* mapFileName;
     Mat map;
+    int scale;
 
     Mat read_map_image(char*);
+    void draw_particles(Eigen::MatrixXf &);
 };
 
 #endif // VISUALIZATION_H

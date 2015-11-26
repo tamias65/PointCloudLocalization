@@ -27,15 +27,18 @@ int main(){
 
     //iterate to fix weighting.
 
-//    MatrixXf particles(300,3);
+    MatrixXf particles(1,3);
+    particles(0,0) = 2000;
+    particles(0,1) = 2000;
+    particles(0,2) = 0;
 
     //create image using particles
-//    Visualization frame;
-//    frame.curr_frame = 1;
-//    frame.create_frame(particles);
+    Visualization frame(10);
+    frame.curr_frame = 1;
+    frame.create_frame(particles);
 
     //create video
-//    Video newVideo();
+    frame.create_video();
 
     return 0;
 
