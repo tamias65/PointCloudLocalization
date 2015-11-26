@@ -8,10 +8,10 @@
 
 Data::Data()
 {
-    this->file[0] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/robotdata1.log";
-    this->file[1] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata2.log";
-    this->file[2] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata3.log";
-    this->file[3] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata4.log";
+    this->file[0] = "../PointCloudLocalization/data/log/robotdata1.log";
+    this->file[1] = "../PointCloudLocalization/data/log/ascii-robotdata2.log";
+    this->file[2] = "../PointCloudLocalization/data/log/ascii-robotdata3.log";
+    this->file[3] = "../PointCloudLocalization/data/log/ascii-robotdata4.log";
 
     this->nFilesToUse = 4;
 

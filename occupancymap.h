@@ -8,6 +8,8 @@ class OccupancyMap
 {
 public:
     OccupancyMap();
+    Eigen::MatrixXf prob;
+
 
 protected:
     int resolution;
@@ -19,8 +21,6 @@ protected:
     int max_x;
     int min_y;
     int max_y;
-
-    Eigen::MatrixXf prob;
 
     void read_map(char *mapName);
 };

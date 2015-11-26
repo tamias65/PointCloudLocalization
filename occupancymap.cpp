@@ -5,7 +5,7 @@
 
 OccupancyMap::OccupancyMap()
 {    
-    char* filename = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/map/wean.dat";
+    char* filename = "../PointCloudLocalization/data/map/wean.dat";
     read_map(filename);
 }
 

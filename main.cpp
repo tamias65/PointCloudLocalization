@@ -36,9 +36,10 @@ int main(){
     Visualization frame(10);
     frame.curr_frame = 1;
     frame.create_frame(particles);
+//    frame.create_frame(map.prob);
 
     //create video
-    frame.create_video();
+    //frame.create_video();
 
     return 0;
 
