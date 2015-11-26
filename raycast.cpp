@@ -1,5 +1,7 @@
 #include "raycast.h"
 #include "Eigen/Dense"
+#include <stdio.h>
+#include <iostream>
 
 #define PI 3.14159265
 
@@ -84,6 +86,7 @@ void RayCast::compute_ray_cast(){
              }
          }
      }
+     std::cout<<"Done building ray map"<<std::endl;
 }
 
 float RayCast::distance(){
@@ -91,10 +94,8 @@ float RayCast::distance(){
 }
 
 bool RayCast::check_target(){
-    if(this->map_ptr->coeff(this->x1,this->y1) == -1.0 || !in_map()){
-        this->ray_cast[this->curr_i][this->curr_j][this->curr_k] = -1;
-        return true;
-    }else if(this->map_ptr->coeff(this->x1,this->y1) == 1.0){
+    if(this->map_ptr->coeff(this->x1,this->y1) == 1.0 ||
+             this->map_ptr->coeff(this->x1,this->y1) == -1.0 || !in_map()){
         this->ray_cast[this->curr_i][this->curr_j][this->curr_k] = distance();
         return true;
     }else{
