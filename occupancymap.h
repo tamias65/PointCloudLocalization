@@ -1,13 +1,13 @@
-#ifndef MAP_H
-#define MAP_H
+#ifndef OCCUPANCYMAP_H
+#define OCCUPANCYMAP_H
 
 #include <string>
 #include "Eigen/Dense"
 
-class Map
+class OccupancyMap
 {
 public:
-    Map();
+    OccupancyMap();
 
 protected:
     int resolution;
@@ -22,7 +22,7 @@ protected:
 
     Eigen::MatrixXf prob;
 
-    int read_map(char *mapName);
+    void read_map(char *mapName);
 };
 
-#endif // MAP_H
+#endif // OCCUPANCYMAP_H

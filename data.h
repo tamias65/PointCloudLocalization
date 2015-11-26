@@ -11,11 +11,16 @@ using namespace std;
 class Data
 {
 public:
-    Data();
-    static string file [4];
     vector<Odom*> odoms;
     vector<Laser*> lasers;
+
+    Data();
+    void read_data();
+
+protected:
+    string file [4];
     int nFilesToUse;
+
     void parse(char, double[]);
 };
 

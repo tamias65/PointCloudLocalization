@@ -8,14 +8,22 @@
 
 Data::Data()
 {
-    string file [] = {"/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/robotdata1.log",
-                      "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata2.log",
-                      "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata3.log",
-                      "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata4.log"};
-    int nFilesToUse = 4;
+    this->file[0] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/robotdata1.log";
+    this->file[1] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata2.log";
+    this->file[2] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata3.log";
+    this->file[3] = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/log/ascii-robotdata4.log";
 
-    for (int i = 0; i < nFilesToUse; i++){
-        ifstream inputFile(file[i].c_str());
+    this->nFilesToUse = 4;
+
+    read_data();
+}
+
+void Data::read_data(){
+    for (int i = 0; i < this->nFilesToUse; i++){
+        ifstream inputFile(this->file[i].c_str());
+        if(!inputFile.is_open()) {
+            fprintf(stderr, "# Could not open file %s\n", this->file[i].c_str());
+        }
         string line;
 
         while (getline(inputFile, line)){
@@ -30,7 +38,6 @@ Data::Data()
                 data[j] = e;
                 j++;
             }
-
             parse(sensor, data);
         }
     }
@@ -41,13 +48,13 @@ void Data::parse(char sensor, double data[]){
         case 'O':
         {
             Odom odom(data);
-            odoms.push_back(&odom);
+            this->odoms.push_back(&odom);
             break;
         }
         case 'L':
         {
             Laser laser(data);
-            lasers.push_back(&laser);
+            this->lasers.push_back(&laser);
             break;
         }
     }

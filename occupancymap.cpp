@@ -1,18 +1,15 @@
-#include "map.h"
+#include "occupancymap.h"
 #include <iostream>
 #include <stdio.h>
 #include <Eigen/Dense>
 
-using Eigen::MatrixXf;
-
-
-Map::Map()
+OccupancyMap::OccupancyMap()
 {    
     char* filename = "/home/alvin/RoboStatProject4/PointCloudLocalization/data/map/wean.dat";
     read_map(filename);
 }
 
-int Map::read_map(char *mapName)
+void OccupancyMap::read_map(char *mapName)
 {
     int x, y, count;
     float temp;
@@ -20,26 +17,25 @@ int Map::read_map(char *mapName)
     FILE *fp;
 
     if((fp = fopen(mapName, "rt")) == NULL) {
-        fprintf(stderr, "# Could not open file %s\n", mapName);
-        return -1;
+        fprintf(stderr, "Could not open file %s\n", mapName);
     }
-    fprintf(stderr, "# Reading map: %s\n", mapName);
+//    fprintf(stderr, "Reading map: %s\n", mapName);
     while((fgets(line, 256, fp) != NULL) && (strncmp("global_map[0]", line , 13) != 0)){
         if(strncmp(line, "robot_specifications->resolution", 32) == 0){
             if(sscanf(&line[32], "%d", &(this->resolution)) != 0){
-                printf("# Map resolution: %d cm\n", this->resolution);
+//                printf("Map resolution: %d cm\n", this->resolution);
             }
         }
         if(strncmp(line, "robot_specifications->autoshifted_x", 35) == 0){
             if(sscanf(&line[35], "%g", &(this->offset_x)) != 0) {
                 this->offset_x = this->offset_x;
-                printf("# Map offsetX: %g cm\n", this->offset_x);
+//                printf("Map offsetX: %g cm\n", this->offset_x);
             }
         }
         if(strncmp(line, "robot_specifications->autoshifted_y", 35) == 0){
             if (sscanf(&line[35], "%g", &(this->offset_y)) != 0){
                 this->offset_y = this->offset_y;
-                printf("# Map offsetY: %g cm\n", this->offset_y);
+//                printf("Map offsetY: %g cm\n", this->offset_y);
             }
         }
     }
@@ -47,9 +43,8 @@ int Map::read_map(char *mapName)
     if(sscanf(line,"global_map[0]: %d %d", &this->size_y, &this->size_x) != 2){
         fprintf(stderr, "ERROR: corrupted file %s\n", mapName);
         fclose(fp);
-        return -1;
     }
-    printf("# Map size: %d %d\n", this->size_x, this->size_y);
+    printf("Map size: %d %d\n", this->size_x, this->size_y);
 
     this->prob.resize(this->size_x, this->size_y);
 
@@ -87,7 +82,6 @@ int Map::read_map(char *mapName)
     std::cout<<"Done reading map"<<std::endl;
 
     fclose(fp);
-    return 0;
 }
 
 

@@ -7,7 +7,8 @@ SOURCES += main.cpp \
     data.cpp \
     laser.cpp \
     odom.cpp \
-    map.cpp
+    visualization.cpp \
+    occupancymap.cpp
 
 INCLUDEPATH += /usr/local/opencv/build/include/opencv2
 LIBS += `pkg-config opencv –cflags –libs`
@@ -32,4 +33,5 @@ HEADERS += \
     data.h \
     odom.h \
     laser.h \
-    map.h
+    visualization.h \
+    occupancymap.h
