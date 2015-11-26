@@ -2,20 +2,22 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include <stdio.h>
-#include "parsedata.h"
 #include <iostream>
+#include "data.h"
+#include "map.h"
 
 using namespace cv;
 
 int main(){
 
     //read in the datalog into odom & laser scan
-    ParseData data;
+    Data data;
 
     cout << "There are " << data.odoms.size() << " odom points" << endl;
     cout << "There are " << data.lasers.size() << " laser points" << endl;
 
-    //read in occupancy map as weight?
+    //create occupancy map
+    Map map;
 
     //for every point, transform laser distance from laser frame to odom frame
 

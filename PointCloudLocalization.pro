@@ -4,9 +4,10 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    odomdata.cpp \
-    laserdata.cpp \
-    parsedata.cpp
+    data.cpp \
+    laser.cpp \
+    odom.cpp \
+    map.cpp
 
 INCLUDEPATH += /usr/local/opencv/build/include/opencv2
 LIBS += `pkg-config opencv –cflags –libs`
@@ -28,6 +29,7 @@ LIBS += -lopencv_legacy
 LIBS += -lopencv_flann
 
 HEADERS += \
-    odomdata.h \
-    laserdata.h \
-    parsedata.h
+    data.h \
+    odom.h \
+    laser.h \
+    map.h
