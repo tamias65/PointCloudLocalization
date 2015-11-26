@@ -12,13 +12,13 @@ class Visualization
 public:
     Visualization(int);
     void create_frame(Eigen::MatrixXf &);
-    void create_video();
+    void create_video(int, int);
 
     int curr_frame;
+    Mat map;
 
 protected:
     char* mapFileName;
-    Mat map;
     int scale;
 
     Mat read_map_image(char*);

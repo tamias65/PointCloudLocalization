@@ -42,29 +42,29 @@ void Visualization::create_frame(MatrixXf &particles){
 }
 
 void Visualization::draw_particles(MatrixXf &particles){
-//    for(int i = 0; i < particles.rows(); i++){
-//        for(int j = 0; j < particles.cols(); j++){
-//            if(particles(i,j)>0.0){
-//                int x = j;
-//                int y = i;
-//                circle(this->map, Point(x,y), 1/2, Scalar(0,0,255));
-//            }
-//        }
-//    }
-    for (int i = 0; i < particles.rows(); i++){
-        int x = particles(i,0)/this->scale;
-        int y = particles(i,1)/this->scale;
-//        std::cout<<x<<std::endl;
-//        std::cout<<y<<std::endl;
-        circle(this->map, Point(x,y), 1/2, Scalar(0,0,255));
+    for(int i = 0; i < particles.rows(); i++){
+        for(int j = 0; j < particles.cols(); j++){
+            if(particles(i,j)==1.0){
+                int x = j;
+                int y = i;
+                circle(this->map, Point(x,y), 1/2, Scalar(0,0,255));
+            }
+        }
     }
+//    for (int i = 0; i < particles.rows(); i++){
+//        int x = particles(i,0)/this->scale;
+//        int y = particles(i,1)/this->scale;
+////        std::cout<<x<<std::endl;
+////        std::cout<<y<<std::endl;
+//        circle(this->map, Point(x,y), 1/2, Scalar(0,0,255));
+//    }
 }
 
-void Visualization::create_video(){
+void Visualization::create_video(int width, int height){
     VideoCapture in_capture("../PointCloudLocalization/images/frame%d.jpg");
     Mat img;
 
-    VideoWriter out_capture("../PointCloudLocalization/images/video.avi", CV_FOURCC('M','J','P','G'), 30, Size(802,447));
+    VideoWriter out_capture("../PointCloudLocalization/images/video.avi", CV_FOURCC('M','J','P','G'), 30, Size(width, height));
 
     while (true)
     {

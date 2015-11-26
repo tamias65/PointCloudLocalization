@@ -5,8 +5,9 @@
 
 //UpdateModel::UpdateModel()
 //{
-
+//    z_max = 820; //in cm
 //}
+
 
 //void probability(){
 //    float prob = 1;

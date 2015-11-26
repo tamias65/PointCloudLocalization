@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     odom.cpp \
     visualization.cpp \
     occupancymap.cpp \
-    updatemodel.cpp
+    updatemodel.cpp \
+    raycast.cpp
 
 INCLUDEPATH += /usr/local/opencv/build/include/opencv2
 LIBS += `pkg-config opencv –cflags –libs`
@@ -36,4 +37,5 @@ HEADERS += \
     laser.h \
     visualization.h \
     occupancymap.h \
-    updatemodel.h
+    updatemodel.h \
+    raycast.h
