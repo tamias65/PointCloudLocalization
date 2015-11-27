@@ -23,6 +23,7 @@ protected:
     double w_max;
     double w_rand;
     double lambda_short;
+    double var_hit;
 
     double probability(MatrixXf&, Laser&, vector<vector<vector<float> > >&);
     int find_offset(float);
